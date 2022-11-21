@@ -27,22 +27,10 @@ module.exports = ({ mode } = { mode: "production" }) => {
                     loader: "babel-loader"
                 },
                 {
-                    test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
-                    exclude: /node_modules/,
-                    use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
-                },
-                {
-                    test: /\.(png|j?g|svg|gif|ico)?$/,
+                    test: /\.(png|svg|j?g|gif|ico)$/,
                     type: 'asset/resource',
                     exclude: /node_modules/,
-                    use: [{
-                        loader: 'url-loader',
-                        options: {
-                          limit: 8000,
-                          name: 'images/[hash]-[name].[ext]',
-                          publicPath: 'public/static/assets',
-                        }
-                      }, 'file-loader?name=[name].[ext]'],
+                    use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
                 },
                 {
                     test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -53,14 +41,14 @@ module.exports = ({ mode } = { mode: "production" }) => {
 
         plugins: [
             new HtmlWebpackPlugin({
-                template: path.resolve( __dirname, './public/index.html' ),
+                template: path.resolve( __dirname, 'public/index.html' ),
                 filename: 'index.html',
-                favicon: "./public/favicon.ico",
-                manifest: "./public/manifest.json"
+                favicon: "public/favicon.ico",
+                manifest: "public/manifest.json"
             }),
             new webpack.HotModuleReplacementPlugin()
         ],
-
+       
         resolve: {
             extensions: ['.js', '.jsx', '.json'],
             modules: [path.resolve(__dirname, 'src'), 'node_modules']
