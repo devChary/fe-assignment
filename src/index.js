@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { QueryClient, QueryClientProvider } from "react-query";
+
 const rootId = document.getElementById("root");
 
+const queryClient = new QueryClient();
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
   </React.StrictMode>,
   rootId
 );
@@ -21,7 +26,9 @@ if (module.hot && process.env.NODE_ENV === "development") {
     const XenetaApp = require("./App").default;
     ReactDOM.render(
       <React.StrictMode>
-        <App />
+         <QueryClientProvider client={queryClient}>
+          <App />
+         </QueryClientProvider>
       </React.StrictMode>,
       rootId
     );
