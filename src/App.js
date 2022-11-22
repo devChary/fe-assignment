@@ -1,16 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { useQuery } from './utils';
-import { hot } from "react-hot-loader";
+/* Components */
+import MarketPrices from './pages/MarketPrices';
+
+/* Styles */
+import './App.scss';
 
 function App() {
-  
-  const {data, error, isError, isLoading } = useQuery('ports');
   return (
     <div className="App">
-      <h1>Start of an era</h1>
+      <MarketPrices />
     </div>
   );
 }
 
-export default hot(module)(App);
+export default App;
