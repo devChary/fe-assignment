@@ -27,7 +27,7 @@ async function customFetch({ query, params, options = defaultOptions, }) {
 	}
 	const searchParamsString = searchParams.toString();
 
-  const resp = await fetch(`${BASE_URL}/${query}${searchParamsString}`, options);
+  const resp = await fetch(`${BASE_URL}/${query}?${searchParamsString}`, options);
   return await resp.json();
 }
 
