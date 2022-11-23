@@ -9,7 +9,7 @@ import { useQuery } from '../../../utils';
 import { PortSelectionWrapper } from './styled';
 
 const Destinations = ({ setOriginPort, setDestinationPort }) => {
-    const {data: portsData, error, isError, isLoading } = useQuery('ports');
+    const { data: portsData, error, isError, isLoading } = useQuery({ query : 'ports' });
 
     const [query1, setQuery1] = useState('');
     const [query2, setQuery2] = useState('');
