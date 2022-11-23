@@ -4,7 +4,6 @@ import React from 'react';
 import { TimelineWrapper, Date } from './styled';
 
 const Timeline = (props) => {
-    debugger
     const { startDate = '', endDate = '' } = props || {};
     return (
         <TimelineWrapper>

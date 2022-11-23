@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 /* Components */
 import Destinations from './Destinations';
@@ -11,9 +11,15 @@ const MarketPrices = () => {
     const startDate = '20-11-2022';
     const endDate = '25-12-2022';
 
+    const [originPort, setOriginPort] = useState('');
+    const [destinationPort, setDestinationPort] = useState('');
+
     return (
         <Wrapper>
-            <Destinations />
+            <Destinations
+              setOriginPort={setOriginPort} 
+              setDestinationPort={setDestinationPort} 
+            />
             <Timeline startDate={startDate} endDate={endDate} />
         </Wrapper>
     )
