@@ -72,7 +72,7 @@ const MarketPrices = () => {
                 <EmptyState 
                     icon={EmptyFolderIcon} 
                     title="No data found!"
-                    subTitle="No market prices avaialable between the selected ports. Please try again with different ports."
+                    subTitle="No market prices avaialable for the selected ports. Please try again selecting different ports."
                 />
             </EmptyStateWrap>}
         </Wrapper>

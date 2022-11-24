@@ -43,7 +43,7 @@ const SearchInput = ({ id, name, query, data, handleChange, handleClick, placeho
     const showEmptyMessage =  query?.length > 0 && filteredResultsLength === 0;
 
     return (
-        <SearchInputWrapper>
+        <SearchInputWrapper ref={refDropdownContainer}>
             <InputComponent
                 name={name}
                 value={query} 
