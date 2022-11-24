@@ -5,7 +5,8 @@ export const PortSelectionWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0 24px;
-    width: 36%;
+    width: 100%;
+    max-width: 672px;
 `;
 
 export const SearchIcon = styled.img``;

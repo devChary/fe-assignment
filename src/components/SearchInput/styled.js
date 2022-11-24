@@ -13,7 +13,7 @@ export const InputComponent = styled.input`
     font-size: 1rem;
     color: var(--grayscale-1000);
     border-bottom: 2px solid var(--grayscale-200);
-    width: ${props => props.height || '100%'};
+    width: ${props => props.width || '100%'};
     height: ${props => props.height || '50px'};
     &:focus {
         outline: none;
@@ -56,7 +56,6 @@ export const DropDownOptions = styled.div`
     padding: 12px 0px 4px;
     box-shadow: 0px 0px 60px rgba(83, 87, 101, 0.1);
     border-radius: 0 0 4px 4px;
-    // border-top: 2px solid var(--primary-color);
     width: 100%;
     max-height: 250px;
     overflow: auto;
@@ -64,7 +63,6 @@ export const DropDownOptions = styled.div`
     animation-fill-mode: forwards;
     top: 50px;
     z-index: 1;
-    ${props => props.styles || ''}
 `;
 
 export const DropDownOption = styled.div`
