@@ -1,13 +1,13 @@
 import React from 'react';
 
 /* Styles */
-import { TimelineWrapper, Date } from './styled';
+import { TimelineWrapper, Date, Line } from './styled';
 
-const Timeline = (props) => {
-    const { startDate = '', endDate = '' } = props || {};
+const Timeline = ({ startDate = '', endDate = '' }) => {
     return (
         <TimelineWrapper>
             <Date>{startDate}</Date>
+            <Line />
             <Date>{endDate}</Date>
         </TimelineWrapper>
     )
