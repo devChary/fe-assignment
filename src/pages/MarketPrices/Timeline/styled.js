@@ -5,13 +5,14 @@ export const TimelineWrapper = styled.div`
     max-width: 1100px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center;    
     margin: 36px 48px;
 `;
 
 export const Date = styled.div`
-    border: 1px solid var(--grayscale-800);
+    border: 2px solid var(--grayscale-800);
     padding: 4px 8px;
+    border-radius: 4px;
 `;
 
 export const Line = styled.div`

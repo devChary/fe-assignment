@@ -28,14 +28,12 @@ export const InputComponent = styled.input`
     }
 `;
 
-
 export const PortName = styled.div`
     z-index: 10;
     padding: 2px;
     cursor: pointer;
     width: 100%;
     text-align: left;
-    border-bottom: 1px solid var(--grayscale-100);
     padding: 12px 16px;
     font-size: 0.875rem;
 `;

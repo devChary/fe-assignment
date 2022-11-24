@@ -5,11 +5,11 @@ import LineChart from 'components/LineChart';
 import Destinations from './Destinations';
 import Timeline from './Timeline';
 
-/* utils */
+/* utils | Consts */
 import { useQuery } from 'utils';
 
 /* Styles */
-import { Wrapper, HeaderWrapper, DateWrap, InnerWrap, FiltersWrap, DataPoints } from './styled';
+import { Wrapper, HeaderWrapper, DateWrap, InnerWrap } from './styled';
 
 const MarketPrices = () => {
     const [originPort, setOriginPort] = useState('');
@@ -50,9 +50,6 @@ const MarketPrices = () => {
                         <DateWrap>{startDate} - {endDate}</DateWrap>
                         <InnerWrap>
                             <LineChart marketRates={marketRates} range={range} />
-                            <FiltersWrap>
-                                <DataPoints>{marketRatesArrLength} points</DataPoints>
-                            </FiltersWrap>
                         </InnerWrap>
                         <Timeline startDate={startDate} endDate={endDate} />
                 </>
