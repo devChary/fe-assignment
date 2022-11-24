@@ -2,35 +2,48 @@ import React, { useEffect, useState } from 'react';
 
 /* Components */
 import LineChart from 'components/LineChart';
+import EmptyState from 'components/EmptyState';
 import Destinations from './Destinations';
 import Timeline from './Timeline';
 
-/* utils | Consts */
+/* utils | Assets */
 import { useQuery } from 'utils';
+import EmptyFolderIcon from '/src/assets/empty_folder.png';
 
 /* Styles */
-import { Wrapper, HeaderWrapper, DateWrap, InnerWrap } from './styled';
+import { Wrapper, HeaderWrapper, DateWrap, InnerWrap, EmptyStateWrap } from './styled';
 
 const MarketPrices = () => {
     const [originPort, setOriginPort] = useState('');
     const [destinationPort, setDestinationPort] = useState('');
     const [isverifiedPortCodes, setIsVerifiedPortCodes] = useState(false);
+    const [emptyState, setShowEmptyState] = useState(false);
+    const [range, setRange] = useState('high'); /* Can further extend funtionality where multiple ranges can be selected which leads to the graph changes */
 
-    const [range, setRange] = useState('high');
-
-    const { data: marketRates, error, isError, isLoading } = useQuery({ 
+    const { data: marketRates, error, isError, isLoading, refetch } = useQuery({ 
             query: 'rates', 
             params: { origin: originPort?.code, destination: destinationPort?.code }, 
             enabled: isverifiedPortCodes
         });
     
-    const startDate = marketRates?.[0].day;
-    const endDate = marketRates?.[marketRates?.length - 1].day;
+    const startDate = marketRates?.[0]?.day;
+    const endDate = marketRates?.[marketRates?.length - 1]?.day;
 
-    const marketRatesArrLength = marketRates?.length
+    const marketRatesArrLength = marketRates?.length;
 
     useEffect(() => {
-        if (originPort?.code && destinationPort?.code) setIsVerifiedPortCodes(true);
+        if (marketRates?.length > 0) {
+            const hasNoMarketRates = marketRates?.every(item => !item.high && !item.low && !item.mean); 
+            if (hasNoMarketRates) setShowEmptyState(true);
+        }
+    }, [marketRates]);
+
+    useEffect(() => {
+        const bothPortsSelected = originPort?.code && destinationPort?.code;
+        if (bothPortsSelected) {
+            refetch();
+            setIsVerifiedPortCodes(true);
+        }
     }, [originPort, destinationPort])
 
     return (
@@ -46,14 +59,22 @@ const MarketPrices = () => {
 
            {marketRatesArrLength > 0 && 
                 <>
-                        {/* This will essentially be a date picker, just adding for visual ref */}
-                        <DateWrap>{startDate} - {endDate}</DateWrap>
-                        <InnerWrap>
-                            <LineChart marketRates={marketRates} range={range} />
-                        </InnerWrap>
-                        <Timeline startDate={startDate} endDate={endDate} />
+                    {/* This will essentially be a date picker, just adding for visual ref */}
+                    <DateWrap>{startDate} - {endDate}</DateWrap>
+                    <InnerWrap>
+                        <LineChart marketRates={marketRates} range={range} />
+                    </InnerWrap>
+                    <Timeline startDate={startDate} endDate={endDate} />
                 </>
             }
+            
+            {((!marketRatesArrLength || emptyState) && isverifiedPortCodes && !isLoading) && <EmptyStateWrap>
+                <EmptyState 
+                    icon={EmptyFolderIcon} 
+                    title="No data found!"
+                    subTitle="No market prices avaialable between the selected ports. Please try again with different ports."
+                />
+            </EmptyStateWrap>}
         </Wrapper>
     )
 }
