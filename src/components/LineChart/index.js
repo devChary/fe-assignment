@@ -6,7 +6,26 @@ import * as d3 from 'd3';
 /* Styles */
 import './styles.scss';
 
-const LineChart = ({ marketRates, range }) => {
+const Labels = () => {
+    return (
+      <div className='label-wrapper'>
+        <div className='label'>
+           <div className='colorcode yellow'></div>
+           <p className='text'>High</p>
+        </div>
+        <div className='label'>
+           <div className='colorcode red' />
+           <p className='text'>Mean</p>
+        </div>
+        <div className='label'>
+           <div className='colorcode blue' />
+           <p className='text'>Low</p>
+        </div>
+      </div>
+    )
+}
+
+const LineChart = ({ marketRates, range, emptyState }) => {
     const svgRef = useRef(null);
     
     /* Generates Line chart */
@@ -37,26 +56,40 @@ const LineChart = ({ marketRates, range }) => {
         const x = d3.scaleTime().range([0, width]);
         const y = d3.scaleLinear().range([height, 0]);
 
-        // define the 1st line
+        /* define the 1st line */
         const valueline = d3.line()
         .x(function(d) { return x(d.date); })
         .y(function(d) { return y(d.high); });
 
-        // define the 2nd line
+         /* define the 2nd line */
+         const valueline3 = d3.line()
+         .x(function(d) { return x(d.date); })
+         .y(function(d) { return y(d.mean); });
+
+        /* define the 3rd line */
         const valueline2 = d3.line()
         .x(function(d) { return x(d.date); })
         .y(function(d) { return y(d.low); });
 
-         // define the 3nd line
-         const valueline3 = d3.line()
-         .x(function(d) { return x(d.date); })
-         .y(function(d) { return y(d.mean); });
+        // gridlines in y axis function
+        const createYGridlines = () => {		
+          return d3.axisLeft(y)
+              .ticks(5)
+          }
     
         x.domain(d3.extent(data, (d) => { return d.date; }));
         y.domain([0, d3.max(data, function(d) {
           return Math.max(d.high, d.low); })]);
 
-        // Add the valueline path.
+        /* add the Y gridlines */
+        svg.append("g")			
+        .attr("class", "grid")
+        .call(createYGridlines()
+            .tickSize(-width)
+            .tickFormat("")
+        )
+
+        /* Add the valueline path. */
         svg.append("path")
             .data([data])
             .attr("class", "line")
@@ -65,16 +98,16 @@ const LineChart = ({ marketRates, range }) => {
             .attr("stroke-width", 1.5)
             .attr("d", valueline);
 
-        // Add the valueline2 path.
-        svg.append("path")
-            .data([data])
-            .attr("class", "line")
-            .attr("fill", "none")
-            .style("stroke", "#82B1FF")
-            .attr("stroke-width", 1.5)
-            .attr("d", valueline2);
+         /* Add the valueline2 path. */
+         svg.append("path")
+         .data([data])
+         .attr("class", "line")
+         .attr("fill", "none")
+         .style("stroke", "#82B1FF")
+         .attr("stroke-width", 1.5)
+         .attr("d", valueline2);
 
-        // Add the valueline3 path.
+        /* Add the valueline3 path. */
         svg.append("path")
             .data([data])
             .attr("class", "line")
@@ -82,7 +115,7 @@ const LineChart = ({ marketRates, range }) => {
             .attr("fill", "none")
             .attr("stroke-width", 1.5)
             .attr("d", valueline3);
-        
+
         svg.append("g")
           .attr("class", "axisGray")
           .attr("transform", `translate(0, ${height})`)
@@ -99,25 +132,22 @@ const LineChart = ({ marketRates, range }) => {
             .tickFormat(dollarFormat)
           );
           
-        // Add the X Axis
+        /* Add the X Axis */
         svg.append("g")
             .attr("transform", "translate(0," + height + ")")
             .call(d3.axisBottom(x)
             .ticks(3));
-
-        // Add the Y Axis
-        svg.append("g")
-            .call(d3.axisLeft(y));
         }
       
         useEffect(() => {
-          if (marketRates?.length > 0 && range) {
+          if (!emptyState && range) {
               generateGraph();
           }
         }, [marketRates, range]);
       
     return (<div>
         <svg ref={svgRef}></svg>
+        <Labels />
     </div>)
 }
 

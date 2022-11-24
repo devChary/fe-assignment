@@ -56,12 +56,12 @@ const MarketPrices = () => {
                 <h2>Benchmarks</h2>
             </HeaderWrapper>
 
-           {marketRatesArrLength > 0 && 
+           {!emptyState && marketRatesArrLength > 0 && 
                 <>
                     {/* This will essentially be a date picker, just adding for visual ref */}
                     <DateWrap>{startDate} - {endDate}</DateWrap>
                     <InnerWrap>
-                        <LineChart marketRates={marketRates} range={range} />
+                        <LineChart marketRates={marketRates} emptyState={emptyState} range={range} />
                     </InnerWrap>
                     <Timeline startDate={startDate} endDate={endDate} />
                 </>

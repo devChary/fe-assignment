@@ -1,11 +1,49 @@
-.axisGray line{
+.axisGray line {
     stroke: var(--grayscale-800);
   }
   
-.axisGray path{
+.axisGray path {
   stroke: var(--grayscale-800);
 }
 
-.axisGray text{
+.axisGray text {
   fill: var(--grayscale-800);
 } 
+
+.grid line {
+  stroke: lightgrey;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+
+.label-wrapper {
+  display: flex;
+  max-width: 320px;
+  justify-content: space-evenly;
+  margin-left: 36px;
+
+  .label {
+    margin-left: 16px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    p {
+      margin-left: 20px;
+    }
+  }
+
+  .colorcode {
+    height: 20px;
+    width: 20px;
+    border-radius: 6px;
+  }
+  .yellow {
+    background-color: #F7CE74;
+  }
+  .red {
+    background-color: red;
+  }
+  .blue {
+    background-color: #82B1FF;
+  }
+}
