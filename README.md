@@ -2,11 +2,17 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+##
+This project uses a basic custom webpack setup which bundles the app, it uses babel to transpile the app | converts JSX to JS
+and to support older versions of JS while we can write latest JS.
+
+It also uses HTML, CSS and HMR plugin to parse the respective file types and supports Hot Module Reload.
+
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm start` || `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
