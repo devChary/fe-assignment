@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 
+/* Components */
 import SearchInput from 'components/SearchInput';
+
+/* utils | assets */
+import { useQuery } from 'utils';
+
 import Arrow from '/src/assets/arrow-symbol.png';
 import GlobeIcon from '/src/assets/globe.png';
-
-/* utils */
-import { useQuery } from 'utils';
 
 /* Styles */
 import { PortSelectionWrapper, ArrowImg } from './styled';
@@ -21,6 +23,7 @@ const Destinations = ({ setOriginPort, setDestinationPort }) => {
            <SearchInput 
                 id="origin"    
                 name="origin"
+                isLoading={isLoading}
                 query={query1} 
                 icon={GlobeIcon}
                 placeholder="Enter Origin"
@@ -36,6 +39,7 @@ const Destinations = ({ setOriginPort, setDestinationPort }) => {
                 id="destination"
                 name="destination"    
                 query={query2} 
+                isLoading={isLoading}
                 icon={GlobeIcon}
                 placeholder="Enter Destination" 
                 data={portsData} 

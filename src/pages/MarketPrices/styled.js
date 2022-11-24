@@ -30,3 +30,7 @@ export const InnerWrap = styled.div`
     display: flex;
     justify-content: space-between;
 `;
+
+export const EmptyStateWrap = styled.div`
+    padding: 50px 100px;
+`;

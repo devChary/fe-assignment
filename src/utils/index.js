@@ -1,8 +1,6 @@
 import { useQuery as useBaseQuery } from 'react-query';
 
-  export const isEmpty = value => {
-    return !value || (typeof value === 'object' && Object.keys(value).length === 0);
-}
+const BASE_URL = `https://685rp9jkj1.execute-api.eu-west-1.amazonaws.com/prod`;
 
 const defaultOptions = { 
     method: 'GET', 
@@ -13,9 +11,12 @@ const defaultOptions = {
     }
 };
 
-const BASE_URL = `https://685rp9jkj1.execute-api.eu-west-1.amazonaws.com/prod`;
+export const isEmpty = value => {
+  return !value || (typeof value === 'object' && Object.keys(value).length === 0);
+}
 
-async function customFetch({ query, params, options = defaultOptions, }) {
+/* custom fetch which takes query string, params and default options and returns data */
+async function customFetch({ query, params, options = defaultOptions }) {
   const searchParams = new URLSearchParams({});
 
   if (params && !isEmpty(params)) {
@@ -31,6 +32,7 @@ async function customFetch({ query, params, options = defaultOptions, }) {
   return await resp.json();
 }
 
+/* React query custom wrapper */
 export function useQuery({ query, params, enabled = true }) {
   return useBaseQuery({
     queryKey: [query],
