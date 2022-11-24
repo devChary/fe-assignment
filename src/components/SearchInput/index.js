@@ -6,7 +6,7 @@ import { useOutsideClick } from '../../utils/hooks/useOutsideClick';
 /* Styles */
 import { PortName, DropDownOptions, DropDownOption, InputComponent, SearchInputWrapper } from '../../pages/MarketPrices/Destinations/styled';
 
-const SearchInput = ({ id, name, query, data, handleChange, handleClick, placeholder, onKeyDown }) => {
+const SearchInput = ({ id, name, query, data, handleChange, handleClick, placeholder, onKeyDown, icon }) => {
 
 	const refDropdownContainer = useRef(null);
 	const isClickedOutside = useOutsideClick(refDropdownContainer);

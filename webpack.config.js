@@ -31,16 +31,16 @@ module.exports = {
             },
             {
                 test: /\.(png|j?g|svg|gif|ico)?$/,
-                type: 'asset/resource',
                 exclude: /node_modules/,
-                use: [{
-                    loader: 'url-loader',
-                    options: {
-                      limit: 8000,
-                      name: 'images/[hash]-[name].[ext]',
-                      publicPath: 'public/static/assets',
-                    }
-                  }, 'file-loader?name=[name].[ext]'],
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            limit: 8000,
+                            name: 'images/[hash]-[name].[ext]',
+                        }
+                    },
+                ],
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -70,7 +70,7 @@ module.exports = {
         open: true,
         static: {
             directory: path.join(__dirname, "dist", "assets"),
-            publicPath: 'public/static/assets'
+            publicPath: 'src/assets'
         },
     }
 }

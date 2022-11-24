@@ -3,6 +3,7 @@ import styled, { css, keyframes } from 'styled-components';
 export const PortSelectionWrapper = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 24px;
     width: 36%;
 `;
@@ -98,4 +99,11 @@ export const SearchInputWrapper = styled.div`
     width: 100%;
     margin: 20px;
     position: relative;
+`;
+
+export const SearchIcon = styled.img``;
+
+export const ArrowImg = styled.img`
+    height: 40px;
+    margin-bottom: 24px;
 `;

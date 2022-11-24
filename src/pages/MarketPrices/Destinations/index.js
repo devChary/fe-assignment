@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 
-import SearchInput from '../../../components/SearchInput';
+import SearchInput from 'components/SearchInput';
+import Arrow from '/src/assets/arrow-symbol.png';
+import GlobeIcon from '/src/assets/globe.png';
 
 /* utils */
-import { useQuery } from '../../../utils';
+import { useQuery } from 'utils';
 
 /* Styles */
-import { PortSelectionWrapper } from './styled';
+import { PortSelectionWrapper, ArrowImg } from './styled';
 
 const Destinations = ({ setOriginPort, setDestinationPort }) => {
     const { data: portsData, error, isError, isLoading } = useQuery({ query : 'ports' });
@@ -15,11 +17,12 @@ const Destinations = ({ setOriginPort, setDestinationPort }) => {
     const [query2, setQuery2] = useState('');
 
     return <>
-        <h1>Destinations</h1>
         <PortSelectionWrapper>
            <SearchInput 
                 id="origin"    
+                name="origin"
                 query={query1} 
+                icon={GlobeIcon}
                 placeholder="Enter Origin"
                 data={portsData} 
                 handleChange={(event) => setQuery1(event.target.value)} 
@@ -28,9 +31,12 @@ const Destinations = ({ setOriginPort, setDestinationPort }) => {
                     setOriginPort(port)
                 }} 
             />
+            <ArrowImg alt="arrow" src={Arrow} />
             <SearchInput 
-                id="destination"    
+                id="destination"
+                name="destination"    
                 query={query2} 
+                icon={GlobeIcon}
                 placeholder="Enter Destination" 
                 data={portsData} 
                 handleChange={(event) => setQuery2(event.target.value)} 
