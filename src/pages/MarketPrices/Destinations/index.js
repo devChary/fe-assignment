@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 /* Components */
-import SearchInput from 'components/SearchInput';
+import { SearchInput } from 'components';
 
 /* utils | assets */
 import { useQuery } from 'utils';

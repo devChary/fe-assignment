@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 /* Components */
-import LineChart from 'components/LineChart';
-import EmptyState from 'components/EmptyState';
+import { LineChart, EmptyState } from 'components';
 import Destinations from './Destinations';
 import Timeline from './Timeline';
 
@@ -72,7 +71,7 @@ const MarketPrices = () => {
                 <EmptyState 
                     icon={EmptyFolderIcon} 
                     title="No data found!"
-                    subTitle="No market prices avaialable between the selected ports. Please try again with different ports."
+                    subTitle="No market prices avaialable for the selected ports. Please try again selecting different ports."
                 />
             </EmptyStateWrap>}
         </Wrapper>

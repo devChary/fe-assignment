@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
     background-color: var(--grayscale-0);
-
 `;
 
 export const HeaderWrapper = styled.div`
