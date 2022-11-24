@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 /* Components */
 import Destinations from './Destinations';
 import Timeline from './Timeline';
+import LineChart from './LineChart';
 
 /* utils */
 import { useQuery } from '../../utils';
@@ -11,12 +12,13 @@ import { useQuery } from '../../utils';
 import { Wrapper } from './styled';
 
 const MarketPrices = () => {
-    const startDate = '20-11-2022';
-    const endDate = '25-12-2022';
+
 
     const [originPort, setOriginPort] = useState('');
     const [destinationPort, setDestinationPort] = useState('');
     const [isverifiedPortCodes, setIsVerifiedPortCodes] = useState(false);
+
+    const [range, setRange] = useState('high');
 
     const { data: marketRates, error, isError, isLoading } = useQuery({ 
             query: 'rates', 
@@ -24,6 +26,9 @@ const MarketPrices = () => {
             enabled: isverifiedPortCodes
         });
     
+    const startDate = marketRates?.[0].day;
+    const endDate = marketRates?.[marketRates?.length - 1].day;
+
     useEffect(() => {
         if (originPort?.code && destinationPort?.code) setIsVerifiedPortCodes(true);
     }, [originPort, destinationPort])
@@ -34,7 +39,8 @@ const MarketPrices = () => {
               setOriginPort={setOriginPort} 
               setDestinationPort={setDestinationPort} 
             />
-            <Timeline startDate={startDate} endDate={endDate} />
+                <LineChart marketRates={marketRates} range={range} />
+                {marketRates?.length > 0 && <Timeline startDate={startDate} endDate={endDate} />}
         </Wrapper>
     )
 }
