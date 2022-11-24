@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 /* Components */
-import LineChart from 'components/LineChart';
-import EmptyState from 'components/EmptyState';
+import { LineChart, EmptyState } from 'components';
 import Destinations from './Destinations';
 import Timeline from './Timeline';
 
