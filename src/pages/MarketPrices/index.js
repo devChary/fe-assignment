@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 /* Components */
 import Destinations from './Destinations';
 import Timeline from './Timeline';
-import LineChart from './LineChart';
+import LineChart from '../../components/LineChart';
 
 /* utils */
 import { useQuery } from '../../utils';

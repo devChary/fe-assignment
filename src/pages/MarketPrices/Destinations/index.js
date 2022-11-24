@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import SearchInput from './SearchInput';
+import SearchInput from '../../../components/SearchInput';
 
 /* utils */
 import { useQuery } from '../../../utils';
