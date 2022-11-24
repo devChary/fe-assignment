@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const TimelineWrapper = styled.div`
     width: 100%;
-    max-width: 900px;
+    max-width: 1100px;
     display: flex;
     justify-content: space-between;
     align-items: center;

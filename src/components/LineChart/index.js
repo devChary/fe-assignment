@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 
 /* Packages */
 import * as d3 from 'd3';
+
+/* Styles */
 import './styles.scss';
 
 const LineChart = ({ marketRates, range }) => {
@@ -19,7 +21,7 @@ const LineChart = ({ marketRates, range }) => {
     
         /* set the dimensions and margins of the graph */
         var margin = { top: 20, right: 20, bottom: 50, left: 70 },
-        width = 960 - margin.left - margin.right,
+        width = 1160 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
     
         /* append the svg object to the defined ref */
