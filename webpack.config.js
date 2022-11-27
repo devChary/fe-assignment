@@ -52,7 +52,7 @@ module.exports = {
     plugins :[
         new MiniCssExtractPlugin(),
         new HtmlWebPackPlugin({
-            template: path.resolve( __dirname, 'public/index.html' ),
+            template: path.resolve( __dirname, 'index.html' ),
             filename: 'index.html',
             favicon: "public/favicon.ico",
             manifest: "public/manifest.json"
