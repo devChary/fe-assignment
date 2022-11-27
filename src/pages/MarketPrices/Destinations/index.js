@@ -7,7 +7,6 @@ import { SearchInput } from 'components';
 import { useQuery } from 'utils';
 
 import Arrow from '/src/assets/arrow-symbol.png';
-import GlobeIcon from '/src/assets/globe.png';
 
 /* Styles */
 import { PortSelectionWrapper, ArrowImg } from './styled';
@@ -25,7 +24,6 @@ const Destinations = ({ setOriginPort, setDestinationPort }) => {
                 name="origin"
                 isLoading={isLoading}
                 query={query1} 
-                icon={GlobeIcon}
                 placeholder="Enter Origin"
                 data={portsData} 
                 handleChange={(event) => setQuery1(event.target.value)} 
@@ -40,7 +38,6 @@ const Destinations = ({ setOriginPort, setDestinationPort }) => {
                 name="destination"    
                 query={query2} 
                 isLoading={isLoading}
-                icon={GlobeIcon}
                 placeholder="Enter Destination" 
                 data={portsData} 
                 handleChange={(event) => setQuery2(event.target.value)} 
