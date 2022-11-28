@@ -11,7 +11,7 @@ module.exports = {
     entry: path.resolve(__dirname, 'src', 'index.js'),
     mode,
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js',
         publicPath: '/',
     },
@@ -52,7 +52,7 @@ module.exports = {
     plugins :[
         new MiniCssExtractPlugin(),
         new HtmlWebPackPlugin({
-            template: path.resolve( __dirname, 'public/index.html' ),
+            template: path.resolve( __dirname, 'index.html' ),
             filename: 'index.html',
             favicon: "public/favicon.ico",
             manifest: "public/manifest.json"
@@ -69,7 +69,7 @@ module.exports = {
         hot: true,
         open: true,
         static: {
-            directory: path.join(__dirname, "dist", "assets"),
+            directory: path.join(__dirname, "build", "assets"),
             publicPath: 'src/assets'
         },
     }
