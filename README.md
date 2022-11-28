@@ -1,6 +1,6 @@
 # fe-assignment
 A data visualisation page to view market prices between two shipping ports.
-=======
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
